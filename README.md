@@ -1,1 +1,1 @@
-# Capstone-Project-Bangkit
+# BinGo - Bangkit Capstone Project 2024 ✨
