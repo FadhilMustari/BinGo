@@ -44,3 +44,9 @@ which is essential in a world where ecological sustainability is not merely an o
   * Figma
 
 # Repositories 📁
+You can check our repositories for each learning path in the tables below. Or you can just directly change the branch in this repository. The `android` branch is for the **Mobile Development** repository, the `backend` branch is for the **Cloud Computing** repository, and the `model` branch is for the **Machine Learning** repository.
+|   Learning Paths   |                                Link                                |
+| :----------------: | :----------------------------------------------------------------: |
+| Mobile Development | [Github](https://github.com/FadhilMustari/BinGo/tree/android)       |
+|  Machine Learning  |  [Github](https://github.com/FadhilMustari/BinGo/tree/model)       |
+|   Cloud Computing  |   [Github](https://github.com/FadhilMustari/BinGo/tree/backend)    |
