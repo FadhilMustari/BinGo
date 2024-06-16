@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BinGo APP</string>
+    <string name="home_button" />
+    <string name="profile_button" />
+    <string name="help" />
+    <string name="faq" />
+    <string name="security" />
+    <string name="terms" />
+    <string name="notification_content_desc" />
+    <string name="logo_content_desc" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Home"
+        android:id="@+id/homes"
+        android:icon="@drawable/baseline_home_24"
+        app:cnb_iconColor="#fff"
+        app:cnb_textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:cnb_textColor="#fff"/>
+    <item
+        android:title="Scan"
+        android:id="@+id/scan"
+        android:icon="@drawable/scan"
+        app:cnb_textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"/>
+    <item
+        android:title="Profile"
+        android:id="@+id/profile"
+        app:cnb_textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:icon="@drawable/profile"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"/>
+</menu>

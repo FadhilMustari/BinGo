@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="pink">#F06292</color>
+    <color name="navi">#2D3D4F</color>
+    <color name="selected_item_color">#008802</color>
+    <color name="unselected_item_color">#000000</color>
+    <color name="disabled_button_color">#D3D3D3</color>
+    <color name="pressed_button_color">#0AFF23</color>
+    <color name="default_button_color">#FFFFFF</color>
+</resources>

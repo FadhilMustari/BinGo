@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splach"
+    app:layoutDescription="@xml/activity_main_scene"
+    tools:context=".ui.Awal.MainActivity">
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/gambarLogo"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo_capstone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+    <TextView
+        android:id="@+id/descApp"
+        android:layout_width="350dp"
+        android:textColor="#000"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="BinGo adalah Aplikasi yang dirancang untuk membantu dalam mengidentifikasi dan mengklasifikasikan jenis sampah yang ada di sekitar"
+        android:textAlignment="center"
+        android:textSize="17sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <ImageView
+        android:id="@+id/gambarScan"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/scan"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+        android:id="@+id/judulScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Fitur Scan"
+        android:textAlignment="center"
+        android:textColor="#000"
+
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/gambarScan"
+        app:layout_constraintStart_toStartOf="@id/gambarScan"
+        app:layout_constraintEnd_toEndOf="@id/gambarScan"/>
+    <TextView
+        android:id="@+id/descScan"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+
+        android:text="Memindai sampah terkait nama sampah, jenis sampah, dan informasi tekait sampah yang dipindai"
+        android:textAlignment="center"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@id/judulScan"
+        app:layout_constraintStart_toEndOf="parent"
+        />
+    <ImageView
+        android:id="@+id/gambarReady"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/verified"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+        android:id="@+id/judulReady"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Selamat Menikmati \nAplikasi"
+        android:textColor="#000"
+
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/gambarReady"
+        app:layout_constraintStart_toEndOf="@id/gambarReady"
+        app:layout_constraintEnd_toEndOf="@id/gambarReady"/>
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/menu1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:altSrc="@drawable/ic_circle_full_24"
+        app:layout_constraintEnd_toStartOf="@+id/menu2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_circle_24"
+        app:tint="#0F9800" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/menu2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:altSrc="@drawable/ic_circle_full_24"
+        app:layout_constraintBottom_toBottomOf="@+id/menu1"
+        app:layout_constraintEnd_toStartOf="@+id/menu3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/menu1"
+        app:layout_constraintTop_toTopOf="@+id/menu1"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_circle_24"
+        app:tint="#0F9800" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/menu3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:altSrc="@drawable/ic_circle_full_24"
+        app:layout_constraintBottom_toBottomOf="@+id/menu2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/menu2"
+        app:layout_constraintTop_toTopOf="@+id/menu2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_circle_24"
+        app:tint="#0F9800" />
+    <LinearLayout
+        android:id="@+id/containerPage"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="@id/menu3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#000"
+
+            android:textSize="25sp"
+            android:text="FINISH"/>
+        <ImageView
+            android:id="@+id/nextSimbol2"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/next2" />
+    </LinearLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

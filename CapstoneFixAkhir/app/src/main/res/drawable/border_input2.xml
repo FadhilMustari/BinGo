@@ -1,0 +1,8 @@
+<!-- res/drawable/edittext_border.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#EFEFEF"/> <!-- Warna latar belakang -->
+    <stroke
+        android:width="2dp"
+        android:color="#FBFBFB"/> <!-- Warna border hitam -->
+    <corners android:radius="10dp"/> <!-- Sudut melengkung -->
+</shape>

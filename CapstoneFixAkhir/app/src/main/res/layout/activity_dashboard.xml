@@ -1,0 +1,54 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Dashboard.dashboard.DashboardActivity">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/navigation"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <com.ismaeldivita.chipnavigation.ChipNavigationBar-->
+<!--            android:id="@+id/bottomNav"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            app:cnb_menuResource="@menu/bottom_navigation_menu"-->
+<!--            android:background="@drawable/bubble"-->
+<!--            app:cnb_iconSize="20dp"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:cnb_unselectedColor="#fff"-->
+<!--            app:cnb_textAppearance="@color/white"-->
+<!--            app:cnb_badgeColor="#FFFFFF"-->
+<!--            app:cnb_orientationMode="horizontal"-->
+<!--            app:cnb_animationDuration="175"-->
+<!--            app:cnb_minExpandedWidth="6dp" />-->
+        <com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cbn_background="#046800"
+            app:cbn_fabColor="#DCDCDC"
+            app:cbn_iconColor="@color/white"
+            app:cbn_height="76dp"
+            app:cbn_icon_size="24dp"
+            app:cbn_curve_radius="16dp"
+            app:cbn_selected_icon_size="48dp"
+            app:cbn_selectedIconColor="@color/black"
+            app:cbn_titleColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
