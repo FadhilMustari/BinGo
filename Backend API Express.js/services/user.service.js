@@ -1,12 +1,12 @@
 const dbPool = require('../config/database');
 
 const register = async (body) => {
-  const query = `INSERT INTO users (username, email, password) VALUES ('${body.username}', '${body.email}', '${body.password}')`;
+  const query = `INSERT INTO users (username, email, password, point) VALUES ('${body.username}', '${body.email}', '${body.password}', '${body.point}')`;
   return dbPool.execute(query);
 };
 
 const login = async (body) => {
-  const query = `SELECT id, username, email FROM users WHERE email = '${body.email}' AND password = '${body.password}'`;
+  const query = `SELECT id, username, email, point FROM users WHERE email = '${body.email}' AND password = '${body.password}'`;
   return dbPool.execute(query);
 };
 
@@ -25,10 +25,17 @@ const getUserByEmail = async (email) => {
   return dbPool.execute(query);
 };
 
+const addPoint = async (userId, pointsToAdd) => {
+  const query = `UPDATE users SET point = point + ? WHERE id = ?`;
+  const values = [pointsToAdd, userId];
+  return dbPool.execute(query, values);
+};
+
 module.exports = {
   register,
   login,
   update,
   viewUser,
   getUserByEmail,
+  addPoint,
 };

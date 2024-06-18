@@ -22,6 +22,8 @@ const register = async (req, res) => {
       });
     }
 
+    body.point = 0;
+
     await userService.register(body);
 
     return res.status(201).json({
@@ -122,9 +124,37 @@ const viewUser = async (req, res) => {
   }
 };
 
+const addPoint = async (req, res) => {
+  const { id } = req.user[0][0];
+  const { pointsToAdd } = req.body;
+
+  if (!pointsToAdd || isNaN(pointsToAdd)) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'jumlah poin harus disertakan dan harus berupa angka',
+    });
+  }
+
+  try {
+    await userService.addPoint(id, pointsToAdd);
+
+    return res.status(200).json({
+      status: 'success',
+      message: 'poin berhasil ditambahkan',
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 'fail',
+      message: 'gagal menambahkan poin',
+    });
+  }
+};
+
+
 module.exports = {
   register,
   login,
   update,
   viewUser,
+  addPoint,
 };
