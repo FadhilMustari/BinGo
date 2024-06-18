@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_splach"
+    android:background="@drawable/bg_bangkit2"
     app:layoutDescription="@xml/activity_main_scene"
     tools:context=".ui.Awal.MainActivity">
     <androidx.constraintlayout.utils.widget.ImageFilterView
