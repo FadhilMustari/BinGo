@@ -2,17 +2,25 @@ package com.example.capstonefix.ui.Dashboard.dashboard.Fragment
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
+import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
 import com.example.capstonefix.databinding.FragmentProfileBinding
 import com.example.capstonefix.repository.Preference
 import com.example.capstonefix.ui.Login.LoginActivity
 import com.example.capstonefix.ui.Profile.EditProfileActivity
 import androidx.core.util.Pair
+import com.example.capstonefix.R
+
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
@@ -65,6 +73,44 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
             requireActivity().finish()
         }
+
+        val info = Preference.getInfo(requireContext())
+        val point = info.third
+
+        binding.infoPoint.text = "Point : $point"
+        // menggunakan ViewTreeObserver untuk mendapatkan lebar parent dari lineBar
+        binding.lineBar.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                //agar tidak dipanggil lagi setiap kali layout berubah
+                binding.lineBar.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val parentWidth = binding.lineBar.width
+
+                val maxPoint = 500
+                val percentage = (point!!.toFloat() / maxPoint.toFloat()) * 100
+
+                if(percentage <= 100){
+                    val layoutParams = binding.lineBar.layoutParams
+                    layoutParams.width = (parentWidth * (percentage / 100)).toInt()
+                    binding.lineBar.layoutParams = layoutParams
+                }else{
+                    val layoutParams = binding.lineBar.layoutParams
+                    layoutParams.width = parentWidth
+                    binding.lineBar.layoutParams = layoutParams
+                }
+
+                if(percentage < 15){
+                    binding.badge.text = ": Pemula"
+                }else if(percentage >= 15 && percentage < 40){
+                    binding.badge.text = ": Bronze"
+                }else if(percentage >= 40 && percentage < 67){
+                    binding.badge.text = ": Silver"
+                }else if(percentage >= 67 && percentage < 93){
+                    binding.badge.text = ": Gold"
+                }else{
+                    binding.badge.text = ": Diamond"
+                }
+            }
+        })
     }
 
     override fun onDestroyView() {

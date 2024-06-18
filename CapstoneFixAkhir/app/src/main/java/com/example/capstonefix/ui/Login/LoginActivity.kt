@@ -118,7 +118,7 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, data.mesaage, Toast.LENGTH_LONG).show()
         } else {
             data.token?.let { Preference.saveToken(it, this) }
-            data.data?.let { Preference.saveInfo(it.username!!,it.email!!, this) }
+            data.data?.let { Preference.saveInfo(it.username!!,it.email!!,it.point!!, this) }
             val intent = Intent(this@LoginActivity, SambutanLogin::class.java)
             intent.putExtra("username", data.data?.username)
             intent.putExtra("email", data.data?.email)

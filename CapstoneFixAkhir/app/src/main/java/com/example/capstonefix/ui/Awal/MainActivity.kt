@@ -31,10 +31,11 @@ class MainActivity : AppCompatActivity() {
 
         val token = Preference.getToken(this)
         if(token != null){
-            val (username, email) = Preference.getInfo(this)
+            val (username, email, point) = Preference.getInfo(this)
             val intent = Intent(this,DashboardActivity::class.java)
             intent.putExtra("username",username)
             intent.putExtra("email",email)
+            intent.putExtra("point",point)
             startActivity(intent)
             finish()
         }

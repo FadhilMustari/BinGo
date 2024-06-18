@@ -23,22 +23,25 @@ object Preference {
         editor.putString("token", token)
         editor.apply()
     }
-    fun saveInfo(username: String, email: String, context: Context) {
+    fun saveInfo(username: String, email: String,point : Int, context: Context) {
         val sharedPref = context.getSharedPreferences(PREF_INFO, Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putString("username", username)
         editor.putString("email", email)
+        editor.putInt("point", point)
         editor.apply()
     }
     fun getToken(context: Context): String? {
         val sharedPref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         return sharedPref.getString(TOKEN_KEY, null)
     }
-    fun getInfo(context: Context): Pair<String?, String?> {
+    fun getInfo(context: Context): Triple<String?, String?, Int> {
         val sharedPref = context.getSharedPreferences(PREF_INFO, Context.MODE_PRIVATE)
         val username = sharedPref.getString("username", null)
         val email = sharedPref.getString("email", null)
-        return Pair(username, email)
+        val point = sharedPref.getInt("point", 0)
+
+        return Triple(username, email, point)
     }
 
 

@@ -49,6 +49,7 @@ class EditProfileActivity : AppCompatActivity() {
             val name = binding.inputUsername.text.toString()
             val email = binding.inputEmail.text.toString()
             val password = binding.inputPassword.text.toString()
+            val (username, email2, point) = Preference.getInfo(this)
 
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(it.windowToken, 0)
@@ -60,7 +61,7 @@ class EditProfileActivity : AppCompatActivity() {
                         }
                         is Result.Success -> {
                             processEdit(it.data)
-                            Preference.saveInfo(name,email,this)
+                            Preference.saveInfo(name,email,point,this)
                         }
                         is Result.Error -> {
                             Toast.makeText(this, it.error, Toast.LENGTH_LONG).show()

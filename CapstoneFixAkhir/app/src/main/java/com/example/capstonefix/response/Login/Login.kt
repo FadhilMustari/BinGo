@@ -11,5 +11,8 @@ data class Login(
     val email: String? = null,
 
     @field:SerializedName("username")
-    val username: String? = null
+    val username: String? = null,
+
+    @field:SerializedName("point")
+    val point: Int? = null
 )

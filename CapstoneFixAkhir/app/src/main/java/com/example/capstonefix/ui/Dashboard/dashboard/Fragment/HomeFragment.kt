@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
@@ -12,7 +14,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.view.translation.Translator
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
@@ -20,10 +24,12 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.example.capstonefix.PanduanActivity
+import com.example.capstonefix.R
 import com.example.capstonefix.ui.camera.CameraActivity
 import com.example.capstonefix.ui.scan.ResultScanActivity
 import com.example.capstonefix.databinding.FragmentHomeBinding
 import com.example.capstonefix.helper.ImageClassifierHelper
+import com.example.capstonefix.repository.Preference
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
@@ -166,7 +172,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val username = arguments?.getString("username")
-        binding.sapaan.text = "Halo, $username !!"
+
+        binding.sapaan.text = "Hai, $username"
 
         binding.gambarArtikel.setOnClickListener{
             val intent = Intent(requireContext(), PanduanActivity::class.java)
@@ -178,6 +185,7 @@ class HomeFragment : Fragment() {
         }
         weatherTask().execute()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

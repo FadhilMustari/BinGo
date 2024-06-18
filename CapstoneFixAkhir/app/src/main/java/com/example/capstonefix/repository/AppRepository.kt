@@ -15,6 +15,8 @@ import com.example.capstonefix.response.Login.loginRequest
 import com.example.capstonefix.response.Register.RegisterRequest
 import com.example.capstonefix.response.Register.RegisterResponse
 import com.example.capstonefix.response.View.View
+import com.example.capstonefix.response.add_point.AddPointRequest
+import com.example.capstonefix.response.add_point.AddPointResponse
 import com.example.submissionstoryapp.network.ApiService
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -29,7 +31,8 @@ class AppRepository(private val apiService: ApiService) {
         emit(Result.Loading)
         try {
             val registerRequest = EditRequest(username, email, password)
-            val response = apiService.editProfile(registerRequest)
+            val response = apiService.
+            editProfile(registerRequest)
             emit(Result.Success(response))
         } catch (e: Exception) {
             Log.e("SignUpViewModel", "postSignUp: ${e.message.toString()}")
@@ -58,6 +61,17 @@ class AppRepository(private val apiService: ApiService) {
             emit(Result.Success(response))
         } catch (e: Exception) {
             Log.e("LoginViewModel", "postLogin: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun postAddPoint(pointsToAdd:Int): LiveData<Result<AddPointResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val addPointRequest = AddPointRequest(pointsToAdd)
+            val response = apiService.addPoint(addPointRequest)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }
     }

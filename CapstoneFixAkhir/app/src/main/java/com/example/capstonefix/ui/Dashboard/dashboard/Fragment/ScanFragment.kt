@@ -16,12 +16,19 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import com.example.capstonefix.R
 import com.example.capstonefix.databinding.FragmentScanBinding
 import com.example.capstonefix.helper.ImageClassifierHelper
+import com.example.capstonefix.repository.Preference
+import com.example.capstonefix.repository.ViewModelFactory
+import com.example.capstonefix.ui.AddPoint.AddPointViewModel
+import com.example.capstonefix.ui.Login.LoginViewModel
 import com.example.capstonefix.ui.camera.CameraActivity
 import com.example.capstonefix.ui.scan.ResultScanActivity
+import com.example.submissionstoryapp.response.repository.Result
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.text.NumberFormat
 
@@ -31,6 +38,10 @@ class ScanFragment : Fragment() {
         private const val TAG = "ScanFragment"
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
+    private val addPointViewModel: AddPointViewModel by viewModels {
+        ViewModelFactory(requireContext())
+    }
+
     private var currentImageUri: Uri? = null
     private var _binding: FragmentScanBinding? = null
     private val binding get() = _binding!!
@@ -142,10 +153,26 @@ class ScanFragment : Fragment() {
     }
 
     private fun analyzeImage() {
-        val intent = Intent(requireContext(), ResultScanActivity::class.java)
-        intent.putExtra(ResultScanActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
-        startActivity(intent)
-        binding.PopupContainer.visibility = View.GONE
+        addPointViewModel.addPoint(10).observe(viewLifecycleOwner){result ->
+            if (result != null) {
+                when(result) {
+                    is Result.Loading -> {
+
+                    }
+                    is Result.Success -> {
+                        val (username, email, point) = Preference.getInfo(requireContext())
+                        Preference.saveInfo(username!!,email!!,point + 10, requireContext())
+                        val intent = Intent(requireContext(), ResultScanActivity::class.java)
+                        intent.putExtra(ResultScanActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
+                        startActivity(intent)
+                        binding.PopupContainer.visibility = View.GONE
+                    }
+                    is Result.Error -> {
+                        Toast.makeText(requireContext(), result.error, Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
     }
     private fun showResultImage(){
         binding.PopupContainer.visibility = View.VISIBLE

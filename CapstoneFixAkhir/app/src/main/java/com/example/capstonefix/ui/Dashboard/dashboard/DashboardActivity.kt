@@ -30,11 +30,12 @@ class DashboardActivity : AppCompatActivity() {
 
 
 
-        val (username, email) = Preference.getInfo(this)
+        val (username, email, point) = Preference.getInfo(this)
 
         val bundle = Bundle().apply {
             putString("username", username)
             putString("email", email)
+            putInt("point",point)
         }
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment

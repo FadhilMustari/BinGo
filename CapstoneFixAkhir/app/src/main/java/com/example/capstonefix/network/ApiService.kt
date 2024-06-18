@@ -8,6 +8,8 @@ import com.example.capstonefix.response.Login.loginRequest
 import com.example.capstonefix.response.Register.RegisterRequest
 import com.example.capstonefix.response.Register.RegisterResponse
 import com.example.capstonefix.response.View.ViewResponse
+import com.example.capstonefix.response.add_point.AddPointRequest
+import com.example.capstonefix.response.add_point.AddPointResponse
 import retrofit2.http.*
 
 interface ApiService {
@@ -28,4 +30,9 @@ interface ApiService {
     suspend fun editProfile(
         @Body editRequest: EditRequest
     ): EditResponse
+
+    @PUT("add-point")
+    suspend fun addPoint(
+        @Body addPointRequest: AddPointRequest
+    ): AddPointResponse
 }
