@@ -87,7 +87,6 @@ class ProfileFragment : Fragment() {
 
                 val maxPoint = 500
                 val percentage = (point!!.toFloat() / maxPoint.toFloat()) * 100
-
                 if(percentage <= 100){
                     val layoutParams = binding.lineBar.layoutParams
                     layoutParams.width = (parentWidth * (percentage / 100)).toInt()
@@ -97,24 +96,12 @@ class ProfileFragment : Fragment() {
                     layoutParams.width = parentWidth
                     binding.lineBar.layoutParams = layoutParams
                 }
-
-                if(percentage < 15){
-                    binding.badge.text = ": Pemula"
-                }else if(percentage >= 15 && percentage < 40){
-                    binding.badge.text = ": Bronze"
-                }else if(percentage >= 40 && percentage < 67){
-                    binding.badge.text = ": Silver"
-                }else if(percentage >= 67 && percentage < 93){
-                    binding.badge.text = ": Gold"
-                }else{
-                    binding.badge.text = ": Diamond"
-                }
             }
         })
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _binding=null
     }
 }
